@@ -4,4 +4,4 @@
 百度网盘链接：https://pan.baidu.com/s/1ntreBTv
 ![使用截图1](/image/2015-05-13_185632.png)
 ![使用截图2](/image/2015-05-13_185648.png)
-![使用截图2]([/image/2015-05-13_185737.png](https://github.com/xiaxi626/Dobby_beta/blob/master/image/2015-05-13_185737.png))
+![使用截图2](https://github.com/xiaxi626/Dobby_beta/blob/master/image/2015-05-13_185737.png)
