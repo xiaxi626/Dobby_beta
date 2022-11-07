@@ -1,0 +1,240 @@
+样式，即对文字、图片、页面进行外观修饰，格式美化的命令。下文为用户自建样式参考。
+
+
+1. 样式类型
+
+h	文字标题，按层级由高到低分别是h1、h2、h3、h4、h5、h6
+p	文字段落
+span	文字标题或文字段落或单元格内的一部分文字
+
+div	区域块
+img	图片
+
+ol	有序的总列表
+ul	无序的总列表
+li	列表中的每一个单项（Dobby中目前li不需要样式）
+
+pre	代码块（通常使用软件自带样式即可）
+
+table	表格
+tr	每一行（Dobby中目前tr不需要样式）
+td	每一行中的单元格
+
+body	页面，通常设置背景
+a	对部分文字、图片设置超链接
+
+
+2. css结构
+p.bodycontent-text {
+	font-family: "DK-KAITI", "方正楷体", "华文楷体", "楷体";
+	font-size: 14px;
+	text-align: center;
+}
+
+分解说明（“{}”内各种丰富多彩的样式命令请见下一小节）：
+p	.	bodycontent-text 		{	}
+样式类型	半角下圆点	样式的英文调用名称	半角空格	左花括号	右花括号
+
+
+3. 各种样式类型内部的样式命令
+3.1 文字标题h、文字段落p：
+font-family: "DK-KAITI", "方正楷体","华文楷体","楷体";	字体10种
+font-size: 16px;	字号。单位px，像素。默认16px
+font-weight: normal;	字形。可选为normal（正常）或bold（加粗），字形可以不用填，但h类型样式默认为bold加粗
+font-style: italic;	每一个文字都是斜体。需要设置为斜体则填写，不需要则不用写
+color: #91531d;	文字颜色。“#91531d”是十六位颜色代码
+text-align: left;	文字水平方向的对齐，四种可选：left（强制左对齐）、center（居中）、right（居右）、justify（两端对齐，软件默认）
+text-indent与duokan-text-indent	首行缩进。这两个命令在写的时候必须同时写上，并且数值相同，一般为2em或0em。强制居左或两端对齐的时候必须写，居中或居右时则不要写本命令
+
+
+border	边框。
+
+边框写法1：四边相同边框统一设置
+border: solid 1px #91531d;	“solid”为单实线，“1px”是粗细，“#91531d”是十六位颜色代码	线型：solid单实线、double双实线、dashed虚线、dotted点线、none无
+
+边框写法2：四边不同边框分别设置
+border-top: solid 1px #91531d;	上边框
+border-right: double 1px #91531d;	右边框
+border-bottom: double 1px #91531d;	下边框
+border-left: solid 1px #91531d;	左边框
+
+边框写法3：四边不同边框分别设置
+border-style: solid double dashed dotted;	代表上边框是单实线，右边框是双实线，下边框是虚线，左边框是点线
+border-width: 10px 6px 2px 20px;	上、右、下、左边框粗细分别为10px、6px、2px、20px
+border-color: #a0a0a0 #a0a0a0 #a0a0a0 #ff00ff;	上、右、下、左边框的颜色
+
+边框写法4：四边边框相同的部分统一设置，不同的部分分别设置
+border-style: solid none solid none;	代表上下边框是单实线，左右边框是无
+border-width: 10px 6px 2px 20px;	上、右、下、左边框粗细分别为10px、6px、2px、20px
+border-color: #a0a0a0;	四边边框的颜色都是灰色
+
+
+background-color: #f1d2c3;	背景色。
+border-radius: 1em 0.3em 0.4em 0em;	边框圆角弧度设置（0em~1em）。四组数值分别代表左上角、右上角、右下角、左下角，必须搭配border或background-color使用
+
+
+padding	内边距
+
+内边距写法1：四边相同内边距统一设置
+padding: 0.5em;	“0.5em”代表四边的内边距统一为半个字宽度
+
+内边距写法2：四边内边距分别设置（每个方向在设置时，需要就写，不需要则可以不写）
+padding-top: 0.5em;
+padding-right: 0.3em;
+padding-bottom: 0.4em;
+padding-left: 0.8em;
+
+内边距写法3：四边内边距分别设置（每个方向的设置都必须写）
+padding: 0.5em 0.3em 0.4em 0em;	上、右、下、左内边距分别为0.5em、0.3em、0.4em、0em
+
+
+margin	外边距
+
+外边距写法1：四边外边距分别设置（每个方向的设置都必须写）
+margin: 2em 1em 1.5em 0em;	上、右、下、左外边距分别为2em、1em、1.5em、0em
+
+外边距写法2：四边外边距分别设置（每个方向的设置，需要就写，不需要则可以不写）
+margin-top: 2em;
+margin-right: 1em;
+margin-bottom: 1.5em;
+margin-left: 0em;
+
+外边距的居中特例：左右外边距同时设置为auto，并搭配width
+margin-left: auto;
+margin-right: auto;
+width: 80%;	宽度。数值单位可以为百分比，也可以为em。单位为em时必须搭配font-size设置本样式的基础字号
+
+
+text-decoration: underline;	每一个文字的装饰线。可选为underline（下划线）、overline（上划线）、line-through（单删除线）
+text-shadow: 0.05em 0.06em 0.02em #808080;	每一个文字的阴影。四组数值分别代表向右位移0.05个字宽度、向下位移0.06个字宽度、阴影离散度（0em~1em）、阴影颜色
+
+
+文字标题h和文字段落p的样式命令中必须写的有：font-family和font-size。需要注意的是text-indent与duokan-text-indent需要同text-align搭配使用
+
+
+3.2 span
+
+支持写上去的有：
+font-family	字体
+font-size	字号
+font-weight	文字正常或加粗
+font-style	文字是否斜体
+color	文字颜色
+background-color	文字本身的背景色
+text-decoration	文字装饰线
+text-shadow	文字阴影
+
+目前用户原创样式中<span>还不支持的有：
+text-align	文字水平对齐方向
+text-indent	公共css规范中的首行缩进
+duokan-text-indent	多看css规范中的首行缩进
+padding	内边距
+margin	外边距
+border	边框
+border-radius	边框圆角
+（不支持的就不要写啦）
+
+
+3.3 div
+支持写上去的有：
+font-size	给单位是em的命令设置基础字号
+text-align	给本区域内部元素（h、p、img）设置水平对齐方向
+border	边框
+padding	内边距
+background-color	本区域的背景色
+border-radius	边框圆角
+margin	外边距
+width	宽度
+
+3.4 img
+支持写上去的有：
+font-size	给单位是em的命令设置基础字号
+width	宽度。单位为百分比或em字宽。高度和宽度只能写一个，不能同时写
+height	高度。单位为em字宽。高度和宽度只能写一个，不能同时写
+margin	外边距
+vertical-align: -0.15em;	垂直方向对齐设置。可选为top（顶部对齐）、duokan-middle-line（居中对齐）、bottom（底部对齐）。也可用em为单位填写具体对齐数值
+
+3.5 ol
+支持写上去的有：
+font-family	字体
+font-size	文字字号
+margin	外边距
+
+3.6 ul
+支持写上去的有：
+font-family	字体。目前支持list-style-type种类最多的字体是楷体
+font-size	文字字号
+margin	外边距
+list-style-type: circle;	项目符号类型。可选为none（无）、disc（实心圆点）、circle（空心圆圈）、square（实心方块）
+
+
+3.7 table
+
+支持写上去的有：
+font-size	给单位是em的命令设置基础字号
+margin	外边距
+background-color	全表背景色，包括单元格间隙
+
+有框表格需要用这种写法设置边框，border-style的边框有无顺序为固定写法（无框表格则可以不写）：
+border-style: none solid solid none;
+border-width: 1px;
+border-color: #000000;
+
+
+3.8 td
+支持写上去的有：
+font-family	字体
+font-size	文字字号
+text-align	文字水平对齐方向
+duokan-text-indent	多看css规范中的首行缩进
+text-indent	公共css规范中的首行缩进
+padding	内边距
+border	边框
+background-color	单元格内部的背景色，不含单元格间隙
+vertical-align	垂直对齐方向。td中的vertical-align可选为top、middle、bottom，与img中的略有差异
+
+有框单元格需要用这种写法设置边框，border-style的边框有无顺序为固定写法（无框表格则可以不写）：
+border-style: solid none none solid;
+border-width: 1px;
+border-color: #000000;
+
+width
+width单写在xhtml页面<td>中的写法有两种，请注意写法差异：
+第一种，百分比为单位：<td width="20%"></td>
+第二种，em为单位：<td style="width: 12em"></td>
+
+rowspan	某个单元格与其所在列的下一行或几行合并，在td内写法为<td rowspan="3"><br /></td>
+colspan	某个单元格与其所在行的右边一列或几列合并，在td内的写法为<td colspan="3"><br /></td>
+
+
+3.9 body
+body一般不用单独设置css，只有需要设置body的时候才写进css中，目前支持写上去的有：
+
+背景纯色：
+background-color: #f1d2c3;
+
+背景图（以下命令同时写）：
+background-image: url(..\Images\bg.jpg);	“bg.jpg”是已添加的背景图
+text-align: justify;
+background-size: cover;
+background-position: center;
+
+
+3.10 a
+支持写上去的有：
+color	链接颜色，包含下划线装饰
+font-style	是否斜体
+text-decoration	设置装饰线
+
+
+4 字体
+4.1 黑体：兰亭黑	font-family: "DK-HEITI", "方正兰亭黑简体", "黑体";
+4.2 细黑体：兰亭刊黑	font-family: "DK-XIHEITI", "方正兰亭刊黑简体";
+4.3 黑体：等线字体	font-family: "DK-DENGXIAN";
+4.4 宋体：宋三	font-family: "DK-SONGTI", "方正宋三简体", "方正书宋", "宋体";
+4.5 标题宋体：小标宋	font-family: "DK-XIAOBIAOSONG", "方正小标宋简体";
+4.6 仿宋	font-family: "DK-FANGSONG", "方正仿宋", "华文仿宋", "仿宋";
+4.7 楷体	font-family: "DK-KAITI", "方正楷体", "华文楷体", "楷体";
+4.8 代码字体	font-family: "DK-CODE", "Inconsolata";
+4.9 西文字体	font-family: "DK-SERIF", "Palatino";
+4.10 符号字体	font-family: "DK-SYMBOL", "Symbol";
